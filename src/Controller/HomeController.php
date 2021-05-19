@@ -41,4 +41,24 @@ class HomeController extends AbstractController
             'meteo' => $content
         ]);
     }
+
+    public function gallery()
+    {
+        $content = [];
+        $client = HttpClient::create();
+        $response = $client->request(
+            'GET',
+            'https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=hySDNvBOvkzJtcrJ1kPsrtRxx4TqtQAigNGSE8Jt'
+        );
+
+        $statusCode = $response->getStatusCode();
+
+        if ($statusCode === 200) {
+            $content = $response->getContent();
+            $content = $response->toArray();
+        }
+        return $this->twig->render('Home/photos.html.twig', [
+            'photos' => $content
+        ]);
+    }
 }

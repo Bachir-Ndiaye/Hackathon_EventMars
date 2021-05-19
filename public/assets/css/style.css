@@ -82,6 +82,8 @@ nav h1{
     bottom: 15%;
 }
 .wrapper{
+    border-radius: 20px;
+border: 3px solid var(--black);
     position: absolute;
     top: 0;
     text-align: center;
@@ -92,18 +94,29 @@ nav h1{
     background: rgba(237,135,45,0.5);
     left: -40%;
 }
+
 .w-hiking a {
      font-size: xxx-large;
     text-decoration: none;
     color: white;
     font-weight: bold;
 }
+.w-hiking{
+    min-height: auto !important;
+    padding:7rem .5rem;
+}
+.meteo h1{
+    color:var(--white);
+    padding-bottom: .5rem;
+}
 .wrapper:hover{
     opacity: 1;
 }
 .w-vaisseau{
-    right: -30%;
-    background-color: transparent;
+
+    left:0% !important;
+    padding: .8rem;
+    background-color: var(--orange-crayola);
 }
 
 .festoch{
@@ -116,6 +129,7 @@ nav h1{
     width: 500px;
     margin:auto;
     padding: 1rem;
+    font-size: x-large;
 }
 
 
@@ -146,11 +160,7 @@ nav h1{
     padding: 1rem;
 }
 
-.festoch .button2:hover
-{
-    box-shadow:5px 8px #ccc;
-    color:#c2989d;
-}
+
 .textemulticolore{
     padding: 5rem 0;
 }
@@ -166,12 +176,15 @@ nav h1{
     justify-content: center;
 }
 .meteo{
-    left: -15%;
+    left: -90%;
+    width: 800px;
+    padding: 4.5rem .5rem;
+    min-height: auto !important;
 }
 
 .box-weather{
    text-align: center;
-    background-color: rgba(0, 0, 0, .2);
+    background-color: black;
     max-height: 200px;
     max-width: max-content;
     color: var(--white);
@@ -198,19 +211,28 @@ canvas {
     text-align: center;
     width: max-content;
     margin: auto;
-    border : 2px solid;
     padding: 1rem .5rem;
     background-color: white;
 }
+.button2{
+    padding:.8rem;
+    font-size: large;
+    font-weight: bold;
+}
+.button2:hover{
+    color: var(--orange-crayola);
+}
 .box-success{
-    color: green;
+    color: black;
+    border : 4px solid green;
 }
 
 #recaptcha-anchor-label::after {
     content: 'But im a robot' !important;
 }
 .box-alert{
-    color: red;
+    color: black;
+    border : 4px solid red;
 }
 /*div {position : absolute; width : 100%; left : 0px; top : 400px; }*/
 
@@ -223,14 +245,19 @@ canvas {
 .show-area{
     display: flex;
     justify-content: center;
-    padding: 2rem 0;
+    padding-top: 1rem;
 }
 .landCard{
     margin: 0 1.5rem;
     display: inline-block;
 }
-canvas{
-    margin-top:20rem;
+#distance{
+    padding: 2rem;
+    color: var(--cadmium-orange);
+}
+
+.fa-building{
+    color: var(--orange-crayola);
 }
 nav a{
     text-decoration: none;
@@ -239,7 +266,11 @@ nav a{
     font-size: x-large;
     padding-right: 1rem;
 }
-
+.interest img{
+    height: 600px;
+    width: 600px;
+}
+.interest
 .hidden {
     display: none;
 }
@@ -248,11 +279,14 @@ nav a{
     text-align: center;
     color: white;
 }
-.form-top{
-    margin:2rem 0;
+.form-top {
+    margin-top: 40rem;
+    position: absolute;
+    left: 10%;
 }
-.point-interet{
 
+.point-interet{
+padding-top: 2rem;
 }
 
 /*===TEST**/
@@ -314,7 +348,14 @@ html {
     background: transparent;
     box-shadow: 899px 604px #FFF , 936px 524px #FFF , 1098px 406px #FFF , 1002px 291px #FFF , 147px 1435px #FFF , 938px 1421px #FFF , 1414px 687px #FFF , 579px 1861px #FFF , 146px 694px #FFF , 332px 105px #FFF , 1415px 1188px #FFF , 109px 1491px #FFF , 1788px 1812px #FFF , 1778px 151px #FFF , 1804px 763px #FFF , 192px 1389px #FFF , 1684px 1987px #FFF , 716px 1561px #FFF , 480px 1011px #FFF , 1152px 413px #FFF , 927px 1222px #FFF , 836px 13px #FFF , 91px 135px #FFF , 1705px 1358px #FFF , 1384px 310px #FFF , 1311px 644px #FFF , 1950px 924px #FFF , 786px 140px #FFF , 326px 1510px #FFF , 1134px 975px #FFF , 1638px 643px #FFF , 868px 1729px #FFF , 1215px 1192px #FFF , 863px 799px #FFF , 1320px 1397px #FFF , 825px 1262px #FFF , 828px 912px #FFF , 510px 1630px #FFF , 1788px 162px #FFF , 391px 1418px #FFF , 1243px 1658px #FFF , 175px 1531px #FFF , 670px 1737px #FFF , 243px 274px #FFF , 1408px 1484px #FFF , 1862px 1839px #FFF , 1991px 744px #FFF , 1063px 104px #FFF , 54px 1514px #FFF , 526px 1594px #FFF , 956px 715px #FFF , 1947px 400px #FFF , 44px 1576px #FFF , 232px 1847px #FFF , 1649px 1006px #FFF , 8px 322px #FFF , 1551px 916px #FFF , 1749px 1740px #FFF , 1881px 1169px #FFF , 1248px 476px #FFF , 628px 1341px #FFF , 1702px 1079px #FFF , 490px 1493px #FFF , 936px 7px #FFF , 1949px 121px #FFF , 1776px 360px #FFF , 1043px 1809px #FFF , 411px 969px #FFF , 597px 801px #FFF , 1626px 1362px #FFF , 1986px 1067px #FFF , 1837px 510px #FFF , 304px 209px #FFF , 1317px 845px #FFF , 1772px 1322px #FFF , 1333px 1041px #FFF , 157px 1894px #FFF , 1862px 1333px #FFF , 1790px 1157px #FFF , 308px 1284px #FFF , 1334px 1805px #FFF , 585px 738px #FFF , 1613px 395px #FFF , 1217px 107px #FFF , 903px 862px #FFF , 289px 774px #FFF , 1425px 1033px #FFF , 1683px 1182px #FFF , 1224px 308px #FFF , 943px 1456px #FFF , 82px 99px #FFF , 784px 270px #FFF , 809px 1463px #FFF , 1953px 377px #FFF , 1507px 882px #FFF , 1885px 1435px #FFF , 1817px 637px #FFF , 1116px 1053px #FFF , 544px 527px #FFF , 1948px 140px #FFF;
 }
+.photos img{
+    height: 250px;
+   width: 250px;
+}
 
+.photos{
+    display: inline-block;
+}
 #title {
     position: absolute;
     top: 50%;

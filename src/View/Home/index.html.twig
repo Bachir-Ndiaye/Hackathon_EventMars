@@ -15,14 +15,16 @@
         <div class="airport ">
             <img src="assets/images/villes/meteo.png" alt="">
             <div class="wrapper meteo">
-
+                <h1>Mars Meteo</h1>
+                {% set date = 23 %}
+                {% set date = date +1 %}
                 {% for meteo in meteo.validity_checks.sols_checked %}
                     <div class="box-weather">
                         <h4>Sol {{ meteo }}</h4>
-                        <h5>Aug. 23</h5>
+                        <h5>Aug. {{ date + loop.index }}</h5>
                         <div class="line"></div>
-                        <h4>High : </h4>
-                        <h4>Low : </h4>
+                        <h4>High : {{ random(-19,-15) }} °</h4>
+                        <h4>Low : {{ random(-150,-146) }} °</h4>
                     </div>
                 {% endfor %}
 
@@ -42,7 +44,7 @@
         <div class="hiking">
             <img src="assets/images/villes/hiking-bag.png" alt="">
             <div class="wrapper w-hiking">
-                <a href="/hiking/show/">A walk ?</a>
+                <a href="/hiking/show/">A ride robots ?</a>
             </div>
         </div>
 

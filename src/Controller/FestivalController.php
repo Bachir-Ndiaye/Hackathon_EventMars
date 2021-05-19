@@ -13,18 +13,18 @@ class FestivalController extends AbstractController
                 $recaptcha = new \ReCaptcha\ReCaptcha($secret);
                 $resp = $recaptcha->verify($_POST['g-recaptcha-response']);
                 if ($resp->isSuccess()) {
-                    $success = "Votre réservation a été prise en compte";
+                    $success = "Your booking have been taken in account";
                     return $this->twig->render('Festival/festival.html.twig',[
                         'success' => $success
                     ]);
                 } else {
-                    $errors = "Veuillez valider le CAPTCHA";
+                    $errors = "Please validate the CAPTCHA";
                     return $this->twig->render('Festival/festival.html.twig',[
                         'error' => $errors
                     ]);
                 }
             } else {
-                var_dump('Captcha non remplie');
+                var_dump('Captcha not filled');
             }
         }
         return $this->twig->render('Festival/festival.html.twig');

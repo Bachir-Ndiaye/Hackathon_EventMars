@@ -2,8 +2,25 @@
 
 {% block content %}
 <div class="main-hiking">
-    <h1>Hiking map</h1>
+    <input type="hidden" id="idPop" value={{ idPop.id }}>
+    <input type="hidden" id="coordLands" value="{{ coordBalises }}">
+    <div class="hikingCard">
+        <canvas id ='marsCard' width="500" height="210" style = "background-image: url(/assets/images/mars-rando.png);">
+            <div>
+                <img id="balise" src="/assets/images/balise.png">
+            </div>
+        </canvas>
+        <canvas id ='canevasRobot' width="500" height="210" >
+            <div>
+                <img id="percyImg" src="/assets/images/percy.png">
+            </div>
+        </canvas>
+        <canvas id ='canevas3' width="500" height="210" ></canvas>
+
+    </div>
+
     <div class="form-top">
+        <h1>Hiking map</h1>
         <form method="POST" action="/Hiking/baliseDisplay">
             <div class="select-area">
             {% if filter == 0 %}
@@ -43,41 +60,30 @@
                 </div>
             {% endfor %}
             </div>
+            <h1 id="distance"></h1>
+            <button id="travel" type="button">Confirm your travel</button>
+
         </form>
-    </div>
 
+        <div class="interest">
+            {% if idPop['id'] != 0  and idPop['id'] in baliseId %}
+                <h2><i class="fa fa-building" aria-hidden="true"></i>
+                    POINT OF INTEREST</h2>
+                <h1>{{ idPop.name }}</h1>
+                <h3>{{ idPop.description }}</h3>
+                <img src="{{ idPop.url }}">
+            {% endif %}
 
-
-
-
-
-    <input type="hidden" id="idPop" value={{ idPop.id }}>
-    <input type="hidden" id="coordLands" value="{{ coordBalises }}">
-
-    <div class="hikingCard">
-        <canvas id ='marsCard' width="500" height="200" style = "background-image: url(/assets/images/mars-rando.png);">
-            <div>
-                <img id="balise" src="/assets/images/balise.png">
-            </div>
-        </canvas>
-        <canvas id ='canevasRobot' width="500" height="200" >
-            <div>
-                <img id="percyImg" src="/assets/images/percy.png">
-            </div>
-        </canvas>
-        <canvas id ='canevas3' width="500" height="200" ></canvas>
-    </div>
-    <div>
-        {% if idPop['id'] != 0  and idPop['id'] in baliseId %}
-            <p>POINT OF INTEREST</p>
-            <h3>{{ idPop.name }}</h3>
-            <p>{{ idPop.description }}</p>
-            <img height="200px" width="200px" src="{{ idPop.url }}">
-        {% endif %}
+        </div>
 
     </div>
-    <p id="distance"></p>
-    <button id="travel" type="button">Confirm your travel</button>
+
+
+
+
+
+
+
 
 {% endblock %}
 
@@ -116,7 +122,7 @@
         
         distance += Math.sqrt(Math.pow((coordsBalises[coordsBalises.length-1][0] - coordsBalises[0][0]), 2)
                     + Math.pow((coordsBalises[coordsBalises.length-1][1] - coordsBalises[0][1]), 2));
-        dist.innerHTML = "The travel is " + Math.floor(distance) + " km.";
+        dist.innerHTML = "The distance for the travel is " + Math.floor(distance) + " km.";
         });
         
 
@@ -142,14 +148,13 @@
             for (let j=0; j<20; j++)
             setTimeout(() => {
                 ctx.beginPath();        
-                //ctx.moveTo(bal1[0]+10, bal1[1]+20);
-                //ctx.lineTo(bal2[0]+10, bal2[1]+20);
+
                 let posRobot = [(bal1[0]+10)-(bal1[0]-bal2[0])*j/20-40, (bal1[1]+20)-(bal1[1]-bal2[1])*j/20-30];
-                //console.log(posRobot);
+
                 ctx.moveTo((bal1[0]+10)-(bal1[0]-bal2[0])*j/20, (bal1[1]+20)-(bal1[1]-bal2[1])*j/20);
                 ctx.lineTo((bal1[0]+10)-(bal1[0]-bal2[0])*(j+1)/20, (bal1[1]+20)-(bal1[1]-bal2[1])*(j+1)/20);
                 ctx.lineWidth = 3;
-                ctx.strokeStyle = '#331040';
+                ctx.strokeStyle = '#f55536';
                 ctx.stroke();
                 robot(posRobot, 60);
             }, 50*(j+1));
@@ -165,10 +170,9 @@
         var context = canvas.getContext("2d");
         canvas.addEventListener('click', function (event) {
             coords = [event.layerX, event.layerY];
-            //coords layer = coords canvas * 3 
+
             document.location.href="/Hiking/landDisplay/"+coords[0]+"/"+coords[1];
-            //var pixelData = context.getImageData(event.layerX, event.layerY, 1, 1).data;
-            //console.log(pixelData);
+
         }); 
 
         function robot(baliseCoord, size) {
