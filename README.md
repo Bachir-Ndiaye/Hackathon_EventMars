@@ -1,3 +1,7 @@
+# Our app architecture
+![architecture of EventMars app](https://i.ibb.co/xJX2gzD/Untitled-Diagram-Page-1.png)
+
+[Link to the video presentation](https://kapwi.ng/c/DDo3r5ku)
 # Simple MVC
 
 ## Description
