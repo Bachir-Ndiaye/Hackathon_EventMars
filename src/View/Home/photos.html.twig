@@ -1,0 +1,11 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+
+    {% for i in 0..50 %}
+        <div class="photos">
+            <img src="{{ photos.photos[i].img_src }}" alt="">
+        </div>
+
+    {% endfor %}
+{% endblock %}

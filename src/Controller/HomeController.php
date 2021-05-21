@@ -9,6 +9,8 @@
 
 namespace App\Controller;
 
+use Symfony\Component\HttpClient\HttpClient;
+
 class HomeController extends AbstractController
 {
     /**
@@ -21,6 +23,42 @@ class HomeController extends AbstractController
      */
     public function index()
     {
-        return $this->twig->render('Home/index.html.twig');
+        $content = [];
+        $client = HttpClient::create();
+        $response = $client->request(
+            'GET',
+            'https://api.nasa.gov/insight_weather/?api_key=hySDNvBOvkzJtcrJ1kPsrtRxx4TqtQAigNGSE8Jt&feedtype=json&ver=1.0'
+        );
+
+        $statusCode = $response->getStatusCode();
+
+        if ($statusCode === 200) {
+            $content = $response->getContent();
+            $content = $response->toArray();
+        }
+
+        return $this->twig->render('Home/index.html.twig', [
+            'meteo' => $content
+        ]);
+    }
+
+    public function gallery()
+    {
+        $content = [];
+        $client = HttpClient::create();
+        $response = $client->request(
+            'GET',
+            'https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=hySDNvBOvkzJtcrJ1kPsrtRxx4TqtQAigNGSE8Jt'
+        );
+
+        $statusCode = $response->getStatusCode();
+
+        if ($statusCode === 200) {
+            $content = $response->getContent();
+            $content = $response->toArray();
+        }
+        return $this->twig->render('Home/photos.html.twig', [
+            'photos' => $content
+        ]);
     }
 }
